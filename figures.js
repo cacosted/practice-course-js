@@ -1,46 +1,62 @@
-
+// DOM manipulation
+const result = document.querySelector('#result')
+const squareSide = document.querySelector('#square');
+console.log(squareSide);
 //########
 // Square section 
 // ##########
-const squareSide = 7;
+const squarePerimeter = () => {
+    const side = squareSide.value;
+    return (4 * side); 
+};
 
-const squarePerimeter = 4 * squareSide;
+const squareArea = () => {
+    const side = squareSide.value;
+    return (side ** 2)
+};
 
-const squareArea = Math.pow(squareSide,2);
-console.group('Squares');
-console.log(`${squarePerimeter} cm`);
-console.log(`${squareArea} cm2`);
-console.groupEnd();
+const fillResult = (callback) => {
+    result.innerHTML = callback()
+}
+
+// console.group('Squares');
+// console.log(`${squarePerimeter} cm`);
+// console.log(`${squareArea} cm2`);
+// console.groupEnd();
 
 //########
 // Triangle section 
 // ##########
-const triangleSideOne = 6;
-const triangleSideTwo = 6;
-const triangleBase = 4;
-const triangleHeight = 5.5;
 
-const trianglePerimeter = triangleSideOne + triangleSideTwo + triangleBase;
 
-const triangleArea = (triangleHeight * triangleBase) / 2;
+const trianglePerimeter = (sideone,sideTwo,base) => sideOne + sideTwo + base;
 
-console.group('Triangles');
-console.log(`${trianglePerimeter} cm`);
-console.log(`${triangleArea} cm2`);
-console.groupEnd();
+const triangleArea = (height,base) => (height * base) / 2;
+
+// Calculate area of isosceles
+const isoTriangleHeight = (sideOne, sideTwo, base) => {
+    if(sideOne === sideTwo) {
+        const inner = (sideOne ** 2) - ((base ** 2)/4);
+        const result = (sideOne * Math.sqrt(inner))/ 2
+        return result;
+    }
+    else {
+        return 'This is not an Isosceles, try again'
+    }
+}
+
 
 //########
 // Circles section 
 // ##########
 const PI = Math.PI;
-const circleRadius = 4;
 
-const circumference = 2 * PI * circleRadius;
+const circumference = (radius) => 2 * PI * radius;
 
-const circleArea = (circleRadius ** 2)* PI;
+const circleArea = (radius) => (radius ** 2) * PI;
 
-console.group('Circles');
-console.log(`${circumference} cm`);
-console.log(`${circleArea} cm2`);
-console.groupEnd();
+// console.group('Circles');
+// console.log(`${circumference} cm`);
+// console.log(`${circleArea} cm2`);
+// console.groupEnd();
 
